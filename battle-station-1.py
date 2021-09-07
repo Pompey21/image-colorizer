@@ -1,5 +1,6 @@
 from tensorflow.keras.preprocessing.image import ImageDataGenerator, img_to_array, load_img
 from PIL import Image
+from skimage.color import rgb2lab
 import numpy as np
 import glob
 
@@ -45,19 +46,26 @@ And assign A and B to Y.
 
 """
 
-X =[]
-Y =[]
-for img in train[0]:
-  try:
-      lab = rgb2lab(img)
-#       X.append(lab[:,:,0])
-#       Y.append(lab[:,:,1:] / 128) #A and B values range from -127 to 128,
-#       #so we divide the values by 128 to restrict values to between -1 and 1.
-  except:
-     print('error')
+# X =[]
+# Y =[]
+# for img in train:
+#       lab = rgb2lab(img)
+#       # X.append(lab[:,:,0])
+#       # Y.append(lab[:,:,1:] / 128) #A and B values range from -127 to 128,
+#       # #so we divide the values by 128 to restrict values to between -1 and 1.
+
 # X = np.array(X)
 # Y = np.array(Y)
 # X = X.reshape(X.shape+(1,)) #dimensions to be the same for X and Y
+# print(X.shape)
+# print(Y.shape)
+
+# np.save("X_data", X)
+# np.save("Y_data", Y)
+
+
+
+
 
 
 
