@@ -23,7 +23,7 @@ import glob
 	then read them using the two functions for rescaling!
 """
 
-path = "images/colorized/"
+path = "/Users/admin/Desktop/images/colorized/"
 
 # data pre-processing -> making sure it is normalised
 train_datagen = ImageDataGenerator(rescale=1. / 255)

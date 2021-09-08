@@ -18,7 +18,7 @@ model = tf.keras.models.load_model('other_files/colorize_autoencoder.model',
 
 img1_color=[]
 
-img1=img_to_array(load_img('images/sunset.png'))
+img1=img_to_array(load_img('/Users/admin/Desktop/images/sunset.png'))
 img1 = resize(img1 ,(256,256))
 img1_color.append(img1)
 

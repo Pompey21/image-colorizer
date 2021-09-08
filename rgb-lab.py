@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 import matplotlib.image as mpimg
 
 
-img = load_img('images/monalisa.jpg')
+img = load_img('/Users/admin/Desktop/images/monalisa.jpg')
 lab = rgb2lab(img)
 L=lab[:,:,0]
 A=lab[:,:,1]

@@ -7,7 +7,7 @@ import numpy as np
 import glob
 
 # loading all images
-filelist = glob.glob('images/colorized/smth_else/*.png')
+filelist = glob.glob('/Users/admin/Desktop/images/colorized/smth_else/*.png')
 
 # reading images into a numpy array
 X = np.array([np.array(Image.open(fname)) for fname in filelist])

@@ -4,13 +4,13 @@ import glob
 import os
 
 # 1. loading all images
-filelist = glob.glob('images/colorized/smth_else/*.png')
+filelist = glob.glob('/Users/admin/Desktop/images/colorized/smth_else/*.png')
 
 
 # 2. resizing them accordingly - into 256x256!
 new_size = (256, 256)
 
-for infile in glob.glob("images/colorized/smth_else/*.png"):
+for infile in glob.glob("/Users/admin/Desktop/images/colorized/smth_else/*.png"):
     file, ext = os.path.splitext(infile)
     im = Image.open(infile)
     # rgb_im = im.convert('RGB')
