@@ -1,0 +1,8 @@
+1632490510255	geckodriver	INFO	Listening on 127.0.0.1:44915
+1632490919744	geckodriver	INFO	Listening on 127.0.0.1:40815
+1632490919748	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "--marionette" "-no-remote" "-profile" "/tmp/rust_mozprofileDjwtzk"
+1632490921771	Marionette	INFO	Marionette enabled
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at /tmp/rust_mozprofileDjwtzk/search.json.mozlz4", (void 0)))
+1632490923765	Marionette	INFO	Listening on port 41003
+1632490923961	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: , line 0: NotFoundError: No such JSWindowActor 'MarionetteEvents'

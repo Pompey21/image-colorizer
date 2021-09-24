@@ -5,6 +5,10 @@ import urllib.request
 import requests
 import difflib
 
+from webdriver_manager.firefox import GeckoDriverManager
+
+
+
 ################
 # PARAMAS
 ################
@@ -14,31 +18,32 @@ number_of_images = 100
 
 # 1. Opening up the  browser  and going to a specific web-page (provided in the link)
 # this opens a new browser window ready to search
-driver = webdriver.Chrome('/Users/admin/Desktop/image-colorizer/chromedriver')
-driver.get('https://www.google.ca/imghp?hl=en&tab=ri&authuser=0&ogbl')
+browser = webdriver.Firefox(executable_path='/afs/inf.ed.ac.uk/user/s18/s1813308/bin/geckodriver')
+# GeckoDriverManager(path='~/geckodriver').install()
+browser.get('https://www.google.ca/imghp?hl=en&tab=ri&authuser=0&ogbl')
 
 
 # 2. Interacting with Google's home page
 #	- that annoying 'Before you continue' notification keeps on popping up
 #   	-> need to get rid of it!
-driver.find_element_by_id('L2AGLb').click()
+browser.find_element_by_id('L2AGLb').click()
 
 #	- finding that search box and putting in our searching qiery
-search_box = driver.find_element_by_xpath('//*[@id="sbtc"]/div/div[2]/input')
+search_box = browser.find_element_by_xpath('//*[@id="sbtc"]/div/div[2]/input')
 search_box.send_keys(what_to_search)
 search_box.send_keys(Keys.ENTER)
 
 
-html_before = driver.page_source
+html_before = browser.page_source
 
 
 
-img = driver.find_element_by_xpath('//*[@id="islrg"]/div[1]/div['+str(1)+']/a[1]/div[1]/img')
+img = browser.find_element_by_xpath('//*[@id="islrg"]/div[1]/div['+str(1)+']/a[1]/div[1]/img')
 img.click()
 
 
 # get the html of the website
-html_after = driver.page_source
+html_after = browser.page_source
 
 
 difference = difflib.ndiff(html_before, html_after)
