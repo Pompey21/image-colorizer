@@ -1,5 +1,9 @@
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.by import By
+
 import time 
 import urllib.request
 import requests
@@ -38,16 +42,37 @@ html_before = browser.page_source
 
 
 
-img = browser.find_element_by_xpath('//*[@id="islrg"]/div[1]/div['+str(1)+']/a[1]/div[1]/img')
+# img = browser.find_element_by_xpath('//*[@id="islrg"]/div[1]/div['+str(1)+']/a[1]/div[1]/img')
+css_selector = '.islrc > div:nth-child(1) > a:nth-child(1) > div:nth-child(1) > img:nth-child(1)'
+
+element = WebDriverWait(browser, 10).until(
+    EC.presence_of_element_located((By.CSS_SELECTOR, css_selector))
+)
+img = browser.find_element_by_css_selector(
+    # '/html/body/div[2]/c-wiz/div[4]/div[1]/div/div/div/div[1]/div[1]/span/div[1]/div[1]/div[1]/a[1]/div[1]/img'
+    css_selector
+)
 img.click()
+
+bigimg_css_selector = 'div.tvh9oe:nth-child(2) > c-wiz:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > a:nth-child(1) > img:nth-child(1)'
+
+bigimg = browser.find_element_by_css_selector(
+    bigimg_css_selector
+)
+
+
+src_url = bigimg.get_attribute('src')
+print(src_url)
+
+
 
 
 # get the html of the website
 html_after = browser.page_source
 
-
-difference = difflib.ndiff(html_before, html_after)
-print(difference)
+#
+# difference = difflib.ndiff(html_before, html_after)
+# print(difference)
 
 
 
