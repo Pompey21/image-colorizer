@@ -12,6 +12,10 @@ import difflib
 from webdriver_manager.firefox import GeckoDriverManager
 
 
+def download_url(url: str):
+    requests.get(url)
+    r = requests.get(url, allow_redirects=True)
+    open('somefile', 'wb').write(r.content)
 
 ################
 # PARAMAS
@@ -54,16 +58,27 @@ img = browser.find_element_by_css_selector(
 )
 img.click()
 
-bigimg_css_selector = 'div.tvh9oe:nth-child(2) > c-wiz:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > a:nth-child(1) > img:nth-child(1)'
+# bigimg_css_selector = 'div.tvh9oe:nth-child(2) > c-wiz:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(1) > div:nth-child(2) > div:nth-child(1) > a:nth-child(1) > img:nth-child(1)'
+# element = WebDriverWait(browser, 10).until(
+#     EC.presence_of_element_located((By.CSS_SELECTOR, bigimg_css_selector))
+# )
+# bigimg = browser.find_element_by_css_selector(
+#     bigimg_css_selector
+# )
 
-bigimg = browser.find_element_by_css_selector(
-    bigimg_css_selector
+bigimg_xpath = '/html/body/div[2]/c-wiz/div[4]/div[2]/div[3]/div/div/div[3]/div[2]/c-wiz/div/div[1]/div[1]/div[2]/div/a/img'
+element = WebDriverWait(browser, 10).until(
+    EC.presence_of_element_located((By.XPATH, bigimg_xpath))
+)
+bigimg = browser.find_element_by_xpath(
+    bigimg_xpath
 )
 
 
-src_url = bigimg.get_attribute('src')
-print(src_url)
 
+src_url = bigimg.get_property('src')
+print("Img location: ", src_url)
+download_url(src_url)
 
 
 
